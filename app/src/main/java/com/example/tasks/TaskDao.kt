@@ -1,17 +1,20 @@
+package com.example.tasks
+
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.tasks.Task
 
 @Dao
 interface TaskDao {
 
     @Insert
-    fun insert(task: Task)
+    suspend fun insert(task: Task)
 
     @Update
-    fun update(task : Task)
+    suspend fun update(task : Task)
 
     @Delete
-    fun delete(task: Task)
+    suspend fun delete(task: Task)
 
     @Query("SELECT * From task_table where taskId = :taskId")
     fun get(taskId:Long) : LiveData<Task>

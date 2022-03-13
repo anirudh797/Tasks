@@ -4,11 +4,14 @@
     tools:context=".TasksFragment">
 
 <data>
-
+    <variable
+        name="viewModel"
+        type="com.example.tasks.TaskViewModel" />
 </data>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:padding="12dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -17,19 +20,23 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:hint="Enter a task name"
+            android:text="@={viewModel.newTaskName}"
             android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClickListener="@{()->viewModel.addTask()}"
             android:layout_gravity="center_horizontal"
+            android:text="Save"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            text="@{viewModel.tasksString}"
             android:text="@string/hello_blank_fragment" />
     </LinearLayout>
 

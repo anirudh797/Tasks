@@ -1,3 +1,5 @@
+package com.example.tasks
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -11,9 +13,10 @@ abstract class TaskDatabase : RoomDatabase() {
 
     companion object{
 
+        @Volatile
         private var INSTANCE : TaskDatabase? = null
 
-        fun getInstance(context: Context) : TaskDatabase{
+        fun getInstance(context: Context) : TaskDatabase {
             synchronized(this){
                 var instance = INSTANCE
                 if(instance == null){
@@ -24,6 +27,7 @@ abstract class TaskDatabase : RoomDatabase() {
                     ).build()
                     INSTANCE = instance
                 }
+
                 return instance
                 }
             }
