@@ -47,6 +47,11 @@ class TasksFragment : Fragment() {
         val viewModel = ViewModelProvider(this,viewModeFactory)[TaskViewModel::class.java]
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = viewLifecycleOwner
+        val adapter = TaskItemAdapter()
+        binding?.tasksList?.adapter = adapter
+        viewModel.tasks.observe(viewLifecycleOwner) {
+            adapter.data = it
+        }
         return view
     }
 
