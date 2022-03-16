@@ -50,7 +50,7 @@ class TasksFragment : Fragment() {
         val adapter = TaskItemAdapter()
         binding?.tasksList?.adapter = adapter
         viewModel.tasks.observe(viewLifecycleOwner) {
-            adapter.data = it
+            adapter.submitList(it)
         }
         return view
     }
