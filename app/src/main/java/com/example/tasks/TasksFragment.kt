@@ -52,6 +52,7 @@ class TasksFragment : Fragment() {
         viewModel.tasks.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+
         return view
     }
 
