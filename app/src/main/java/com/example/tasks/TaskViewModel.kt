@@ -8,7 +8,6 @@ import kotlinx.coroutines.launch
 class TaskViewModel(val dao : TaskDao) : ViewModel() {
 
     var newTaskName =""
-    var b=1
     val tasks = dao.getAll()
     val tasksString = Transformations.map(tasks){
         tasks-> formatTasks(tasks)
