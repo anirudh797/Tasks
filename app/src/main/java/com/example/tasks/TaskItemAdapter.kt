@@ -21,7 +21,7 @@ class TaskDiffItemCallback : DiffUtil.ItemCallback<Task>(){
 
 }
 
-class TaskItemAdapter(val clickListener: (taskId:Long)->Unit) : androidx.recyclerview.widget.ListAdapter<Task,TaskItemAdapter.TaskItemViewHolder>(TaskDiffItemCallback()){
+class TaskItemAdapter(private val clickListener: (taskId:Long)->Unit) : androidx.recyclerview.widget.ListAdapter<Task,TaskItemAdapter.TaskItemViewHolder>(TaskDiffItemCallback()){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {
