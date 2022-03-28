@@ -7,7 +7,7 @@ import com.example.tasks.Task
 @Dao
 interface TaskDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: Task)
 
     @Update

@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.tasks.EditTaskViewModel" />
+    </data>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".EditTaskFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/taskId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="@string/hello_blank_fragment" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/task_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="16sp"
+            tools:text="This is a task"
+            android:text="@{viewModel.task.taskName}"
+            android:singleLine="true" />
+
+            <CheckBox
+                android:id="@+id/task_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{viewModel.task.taskDone}"
+                />
+
+        <Button
+            android:id="@+id/update_button"
+            tools:text="Update Task"
+            android:text="Update task"
+            android:layout_margin="10dp"
+            android:onClickListener="@{()->viewModel.updateTask()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/delete_button"
+                tools:text="Delete Task"
+                android:text="Delete Task"
+                android:layout_margin="10dp"
+                android:onClickListener="@{()->viewModel.deleteTask()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
 </FrameLayout>
+</layout>
